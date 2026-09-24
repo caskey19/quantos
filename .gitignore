@@ -13,6 +13,7 @@ __pycache__/
 venv/
 node_modules/
 apps/web/dist/
+apps/web/public/snapshot.json
 *.egg-info/
 .mypy_cache/
 .ruff_cache/

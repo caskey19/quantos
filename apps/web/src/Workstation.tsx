@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createChart, type IChartApi, type ISeriesApi } from "lightweight-charts";
+import { getJson } from "./client";
 
 const WORKSPACES = [
   ["command", "Command Center"],
@@ -23,13 +24,7 @@ const WORKSPACES = [
 
 type WorkspaceId = (typeof WORKSPACES)[number][0];
 
-async function getJson(path: string) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`${path} ${response.status}`);
-  return response.json();
-}
-
-export function Workstation({ mode, live }: { mode: string; live: boolean }) {
+export function Workstation({ mode, live, recorded }: { mode: string; live: boolean; recorded: boolean }) {
   const [active, setActive] = useState<WorkspaceId>("command");
   return (
     <div className="app">
@@ -37,7 +32,13 @@ export function Workstation({ mode, live }: { mode: string; live: boolean }) {
         <div>
           {live ? "LIVE" : <span className="mode-pill">{mode.toUpperCase()}</span>} quant-os
         </div>
-        <div>{live ? "REAL CAPITAL PATH OPEN" : "LIVE SUBMISSION LOCKED"}</div>
+        <div>
+          {live
+            ? "REAL CAPITAL PATH OPEN"
+            : recorded
+              ? "RECORDED STUDY · LIVE SUBMISSION LOCKED"
+              : "LIVE SUBMISSION LOCKED"}
+        </div>
       </header>
       <nav className="nav">
         {WORKSPACES.map(([id, label]) => (
@@ -282,9 +283,17 @@ function Research() {
 function LivePanel() {
   const [message, setMessage] = useState("Live submission is locked.");
   async function attempt() {
-    const response = await fetch("/api/live/enable", { method: "POST" });
-    const payload = await response.json();
-    setMessage(payload.detail ?? "Refused");
+    if (import.meta.env.VITE_STATIC === "1") {
+      setMessage("Live trading cannot be enabled through the API");
+      return;
+    }
+    try {
+      const response = await fetch("/api/live/enable", { method: "POST" });
+      const payload = await response.json();
+      setMessage(payload.detail ?? "Refused");
+    } catch {
+      setMessage("Live trading cannot be enabled through the API");
+    }
   }
   return (
     <div className="stack">
