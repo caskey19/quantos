@@ -1,0 +1,774 @@
+{
+  "strategy": "liquid-short-horizon-reversal",
+  "strategy_version": "0.1.0",
+  "state": "REJECTED",
+  "hypothesis_status": "untested_on_market_data",
+  "promotion": "rejected",
+  "rejection_reasons": [
+    "market data was not used; the panel is synthetic",
+    "survivorship-complete universe is unavailable",
+    "sealed holdout was not opened",
+    "skeptic veto: a synthetic plant cannot be promoted",
+    "stress-model validation Sharpe is not positive"
+  ],
+  "n_trials": 4,
+  "stress_sharpe_by_parameter": {
+    "1:1": -8.221113810133552,
+    "1:5": -6.839635570251335,
+    "5:1": -12.836377997406696,
+    "5:5": -8.611928471866408
+  },
+  "best_stress_parameter": {
+    "lookback": 1,
+    "hold": 5,
+    "sharpe": -6.839635570251335
+  },
+  "parameter_plateau": false,
+  "experiments": [
+    {
+      "experiment_id": "reversal-lb1-h1-optimistic",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "optimistic",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": 0.0014656708547480246,
+        "volatility": 0.01671314711201516,
+        "sharpe": 0.09595387214847116,
+        "sharpe_ci90": [
+          -1.4964833992100592,
+          1.4669093531551671
+        ],
+        "deflated_sharpe_probability": 0.16936073611503688,
+        "sortino": 0.1623966072063436,
+        "calmar": 0.11405663498011376,
+        "max_drawdown": -0.01285037784082943,
+        "average_drawdown": -0.003737600871660395,
+        "drawdown_duration_sessions": 75,
+        "tail_loss_var_5": -0.0016830897331455764,
+        "expected_shortfall_5": -0.0020160586427098856,
+        "skew": 0.16691841545831906,
+        "excess_kurtosis": -0.06811767576616035,
+        "transaction_costs": 2685.737061826219,
+        "slippage": 0.0,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.002482048995058328,
+          "2024": 0.003945872938648121
+        },
+        "trades": 868.0,
+        "hit_rate": 0.4965437788018433,
+        "profit_factor": 1.0177797296927484,
+        "expectancy": 0.48828723060392243,
+        "avg_winner": 56.2919722767429,
+        "avg_loser": -54.54921449682375,
+        "win_loss_ratio": 1.0319483570202577,
+        "avg_holding_sessions": 1.4516129032258065,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -2197.371930953773,
+        "p95_max_drawdown": -3038.0589553642862
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb1-h1-expected",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "expected",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.012470363549772268,
+        "volatility": 0.017165905316744893,
+        "sharpe": -0.7224625320250122,
+        "sharpe_ci90": [
+          -2.339769153122858,
+          0.629356195890807
+        ],
+        "deflated_sharpe_probability": 0.03859064357046049,
+        "sortino": -1.1996460504953002,
+        "calmar": -0.7292400098666817,
+        "max_drawdown": -0.017100492815872892,
+        "average_drawdown": -0.00616099918059021,
+        "drawdown_duration_sessions": 164,
+        "tail_loss_var_5": -0.001786175893641584,
+        "expected_shortfall_5": -0.002127403693053779,
+        "skew": 0.16235356540539259,
+        "excess_kurtosis": -0.07780626158587278,
+        "transaction_costs": 6159.41192033515,
+        "slippage": 215.19492173478113,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.009373735382811943,
+          "2024": -0.003026642762615106
+        },
+        "trades": 868.0,
+        "hit_rate": 0.4873271889400922,
+        "profit_factor": 0.9608142118324494,
+        "expectancy": -1.1079938866221837,
+        "avg_winner": 55.74777696303957,
+        "avg_loser": -55.152917638098415,
+        "win_loss_ratio": 1.0107856365613237,
+        "avg_holding_sessions": 1.4516129032258065,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -3032.330066656701,
+        "p95_max_drawdown": -3934.9544010617287
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb1-h1-stress",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "stress",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.6987692835777704,
+        "volatility": 0.14432143747157725,
+        "sharpe": -8.221113810133552,
+        "sharpe_ci90": [
+          -9.09938789777088,
+          -7.417253341538932
+        ],
+        "deflated_sharpe_probability": 6.346649473679212e-53,
+        "sortino": -8.412788031485082,
+        "calmar": -1.0041418738336854,
+        "max_drawdown": -0.6958870073906573,
+        "average_drawdown": -0.6173558775658273,
+        "drawdown_duration_sessions": 249,
+        "tail_loss_var_5": -0.024633342688336644,
+        "expected_shortfall_5": -0.03119934339691068,
+        "skew": -1.9026723058012698,
+        "excess_kurtosis": 2.710820296243081,
+        "transaction_costs": 16469.60519436598,
+        "slippage": 7621.238758657716,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.6958870073906575,
+          "2024": 0.0
+        },
+        "trades": 169.0,
+        "hit_rate": 0.011834319526627219,
+        "profit_factor": 0.00013171748126780949,
+        "expectancy": -67.03374689444259,
+        "avg_winner": 0.7461924140096595,
+        "avg_loser": -67.8454826945438,
+        "win_loss_ratio": 0.010998409685862092,
+        "avg_holding_sessions": 1.455621301775148,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -93414.32890614425,
+        "p95_max_drawdown": -93445.3906937744
+      },
+      "result": "recorded"
+    },
+    {
+      "experiment_id": "reversal-lb1-h5-optimistic",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "optimistic",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": 0.016784983532308173,
+        "volatility": 0.033970342988195824,
+        "sharpe": 0.5069397567544043,
+        "sharpe_ci90": [
+          -1.1065829554826214,
+          2.4076945516712636
+        ],
+        "deflated_sharpe_probability": 0.29157099518752133,
+        "sortino": 0.8335036490087169,
+        "calmar": 0.6456848140115805,
+        "max_drawdown": -0.025995630016485305,
+        "average_drawdown": -0.007535080861553334,
+        "drawdown_duration_sessions": 95,
+        "tail_loss_var_5": -0.0035693823467752737,
+        "expected_shortfall_5": -0.004381799646617548,
+        "skew": -0.057993053327747485,
+        "excess_kurtosis": -0.04039065174650425,
+        "transaction_costs": 3010.05586136427,
+        "slippage": 0.0,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.01105158666305861,
+          "2024": 0.028011828264941308
+        },
+        "trades": 530.0,
+        "hit_rate": 0.5283018867924528,
+        "profit_factor": 1.0905948211655763,
+        "expectancy": 5.533059265505385,
+        "avg_winner": 126.07913463874144,
+        "avg_loser": -129.47854515251896,
+        "win_loss_ratio": 0.9737453760406931,
+        "avg_holding_sessions": 7.220754716981132,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -6173.731800651451,
+        "p95_max_drawdown": -8395.59458503406
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb1-h5-expected",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "expected",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": 0.0078102580150840595,
+        "volatility": 0.034585380787716405,
+        "sharpe": 0.24217608811337188,
+        "sharpe_ci90": [
+          -1.3907564292624142,
+          2.1393750012412984
+        ],
+        "deflated_sharpe_probability": 0.208535096988754,
+        "sortino": 0.39582712661340813,
+        "calmar": 0.2841421537095828,
+        "max_drawdown": -0.027487150051895504,
+        "average_drawdown": -0.008548088180603711,
+        "drawdown_duration_sessions": 115,
+        "tail_loss_var_5": -0.0036742622270598377,
+        "expected_shortfall_5": -0.0044963428687951465,
+        "skew": -0.05905301918893269,
+        "excess_kurtosis": -0.04209768781925316,
+        "transaction_costs": 5188.43816081443,
+        "slippage": 134.80399153635355,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.01579692308730052,
+          "2024": 0.02392286303996105
+        },
+        "trades": 530.0,
+        "hit_rate": 0.5226415094339623,
+        "profit_factor": 1.0637138095414564,
+        "expectancy": 3.93958002201595,
+        "avg_winner": 125.84537275208389,
+        "avg_loser": -129.53039857967897,
+        "win_loss_ratio": 0.9715508801949043,
+        "avg_holding_sessions": 7.220754716981132,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -6832.14892870209,
+        "p95_max_drawdown": -9255.845494016088
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb1-h5-stress",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_1",
+      "parameters": {
+        "lookback": 1,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "stress",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.7379096781398101,
+        "volatility": 0.1925320128447427,
+        "sharpe": -6.839635570251335,
+        "sharpe_ci90": [
+          -8.568890681187765,
+          -5.109552357644389
+        ],
+        "deflated_sharpe_probability": 1.8944063653441147e-15,
+        "sortino": -8.329580783484593,
+        "calmar": -1.0035458740725942,
+        "max_drawdown": -0.7353023884650354,
+        "average_drawdown": -0.412864509020819,
+        "drawdown_duration_sessions": 249,
+        "tail_loss_var_5": -0.025373720521592927,
+        "expected_shortfall_5": -0.0370274343716103,
+        "skew": -0.6659969832114144,
+        "excess_kurtosis": 4.114711160923896,
+        "transaction_costs": 15730.860939095992,
+        "slippage": 6693.956047360507,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.4537389194399043,
+          "2024": -0.5150843583996927
+        },
+        "trades": 459.0,
+        "hit_rate": 0.35294117647058826,
+        "profit_factor": 0.3429126602858758,
+        "expectancy": -63.89577691463876,
+        "avg_winner": 94.47790316839546,
+        "avg_loser": -150.2814205962938,
+        "win_loss_ratio": 0.6286732105241055,
+        "avg_holding_sessions": 7.2178649237472765,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -86063.08173951763,
+        "p95_max_drawdown": -86480.96104629013
+      },
+      "result": "recorded"
+    },
+    {
+      "experiment_id": "reversal-lb5-h1-optimistic",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "optimistic",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.021257928471939747,
+        "volatility": 0.01853783908603565,
+        "sharpe": -1.1498121698736106,
+        "sharpe_ci90": [
+          -2.854684999939728,
+          0.6562112462516718
+        ],
+        "deflated_sharpe_probability": 0.013799429874741165,
+        "sortino": -1.7335733659023231,
+        "calmar": -0.6582436902754774,
+        "max_drawdown": -0.03229492175313253,
+        "average_drawdown": -0.018785187262683866,
+        "drawdown_duration_sessions": 213,
+        "tail_loss_var_5": -0.0020191787300718246,
+        "expected_shortfall_5": -0.00272038836872345,
+        "skew": -0.2275209137089485,
+        "excess_kurtosis": 0.1706460865875754,
+        "transaction_costs": 2091.3099255291645,
+        "slippage": 0.0,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.025060427463498458,
+          "2024": 0.004071453203873476
+        },
+        "trades": 668.0,
+        "hit_rate": 0.49251497005988026,
+        "profit_factor": 0.9114503034555986,
+        "expectancy": -2.7199539011511917,
+        "avg_winner": 56.844444222449766,
+        "avg_loser": -60.5272901332005,
+        "win_loss_ratio": 0.9391539600955864,
+        "avg_holding_sessions": 1.4236526946107784,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -3724.693206884907,
+        "p95_max_drawdown": -5246.142986665573
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb5-h1-expected",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "expected",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.0325802810319169,
+        "volatility": 0.01895836284750694,
+        "sharpe": -1.73757680734755,
+        "sharpe_ci90": [
+          -3.4368593263788596,
+          0.057945523227087715
+        ],
+        "deflated_sharpe_probability": 0.0025904849463381863,
+        "sortino": -2.5994486532212395,
+        "calmar": -0.8562462742449986,
+        "max_drawdown": -0.03805012881445213,
+        "average_drawdown": -0.02309541334428598,
+        "drawdown_duration_sessions": 213,
+        "tail_loss_var_5": -0.0021021022351881023,
+        "expected_shortfall_5": -0.002826016230719883,
+        "skew": -0.22876799634698716,
+        "excess_kurtosis": 0.17100932603684615,
+        "transaction_costs": 4784.038050019285,
+        "slippage": 166.8862102509447,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.030888262075189132,
+          "2024": -0.0014834930975042848
+        },
+        "trades": 668.0,
+        "hit_rate": 0.4820359281437126,
+        "profit_factor": 0.8631768288071826,
+        "expectancy": -4.314734310362833,
+        "avg_winner": 56.46960769068897,
+        "avg_loser": -60.882821374925484,
+        "win_loss_ratio": 0.927512989960513,
+        "avg_holding_sessions": 1.4236526946107784,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -5430.0504502924705,
+        "p95_max_drawdown": -6871.329801512995
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb5-h1-stress",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 1,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "stress",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.8409155082538812,
+        "volatility": 0.14189585764550844,
+        "sharpe": -12.836377997406696,
+        "sharpe_ci90": [
+          -13.967930356481236,
+          -11.744952834088862
+        ],
+        "deflated_sharpe_probability": 9.496333554751442e-81,
+        "sortino": -13.2414426113608,
+        "calmar": -1.0027880924594799,
+        "max_drawdown": -0.8385774767143641,
+        "average_drawdown": -0.6011467675112907,
+        "drawdown_duration_sessions": 249,
+        "tail_loss_var_5": -0.02455359859472351,
+        "expected_shortfall_5": -0.032696748258716,
+        "skew": -1.6585784772165386,
+        "excess_kurtosis": 3.180912400909771,
+        "transaction_costs": 15581.593891476256,
+        "slippage": 7191.622124966854,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.7425164144744656,
+          "2024": -0.37307645084961083
+        },
+        "trades": 370.0,
+        "hit_rate": 0.05405405405405406,
+        "profit_factor": 0.004234190221421791,
+        "expectancy": -68.16671720187583,
+        "avg_winner": 5.362375996958141,
+        "avg_loser": -72.36837967038062,
+        "win_loss_ratio": 0.07409832887488135,
+        "avg_holding_sessions": 1.4243243243243244,
+        "median_holding_sessions": 1.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -93488.89712493395,
+        "p95_max_drawdown": -93558.00976389281
+      },
+      "result": "recorded"
+    },
+    {
+      "experiment_id": "reversal-lb5-h5-optimistic",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "optimistic",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": 0.0046992554808189535,
+        "volatility": 0.029154649409029253,
+        "sharpe": 0.17532389609653393,
+        "sharpe_ci90": [
+          -1.6729201481699105,
+          1.691473020834155
+        ],
+        "deflated_sharpe_probability": 0.1900505890863694,
+        "sortino": 0.30811058065404945,
+        "calmar": 0.2507305797269371,
+        "max_drawdown": -0.01874225108854599,
+        "average_drawdown": -0.006091639234938931,
+        "drawdown_duration_sessions": 101,
+        "tail_loss_var_5": -0.002818181430607547,
+        "expected_shortfall_5": -0.0035656134552704086,
+        "skew": 0.1465621720551437,
+        "excess_kurtosis": 0.04995376608428703,
+        "transaction_costs": 2239.690667600722,
+        "slippage": 0.0,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": 0.007022110332034925,
+          "2024": -0.0023437790530731473
+        },
+        "trades": 394.0,
+        "hit_rate": 0.5101522842639594,
+        "profit_factor": 1.0659805193126977,
+        "expectancy": 4.377858078011578,
+        "avg_winner": 138.64218093361106,
+        "avg_loser": -135.45182531046245,
+        "win_loss_ratio": 1.0235534339669188,
+        "avg_holding_sessions": 7.279187817258883,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -6929.771306588365,
+        "p95_max_drawdown": -9924.67403395946
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb5-h5-expected",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "expected",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.0021416761688874963,
+        "volatility": 0.029550171612476105,
+        "sharpe": -0.05783982482452187,
+        "sharpe_ci90": [
+          -1.9054780094434591,
+          1.4598806747971522
+        ],
+        "deflated_sharpe_probability": 0.1335852999754254,
+        "sortino": -0.10064086702259105,
+        "calmar": -0.10626751219608943,
+        "max_drawdown": -0.02015363044291074,
+        "average_drawdown": -0.007123770446492312,
+        "drawdown_duration_sessions": 140,
+        "tail_loss_var_5": -0.002871414296851288,
+        "expected_shortfall_5": -0.003641348620158823,
+        "skew": 0.14527069044531432,
+        "excess_kurtosis": 0.04751649191935403,
+        "transaction_costs": 3836.022463935944,
+        "slippage": 98.71321190712709,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": 0.0036460302426080116,
+          "2024": -0.005749763240965766
+        },
+        "trades": 394.0,
+        "hit_rate": 0.5050761421319797,
+        "profit_factor": 1.0415223065758978,
+        "expectancy": 2.787591726663999,
+        "avg_winner": 138.4393072486717,
+        "avg_loser": -135.6467230881028,
+        "win_loss_ratio": 1.0205871848356787,
+        "avg_holding_sessions": 7.279187817258883,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -7823.866362574535,
+        "p95_max_drawdown": -10746.595644529683
+      },
+      "result": "diagnostic"
+    },
+    {
+      "experiment_id": "reversal-lb5-h5-stress",
+      "git_revision": "uncommitted",
+      "data_version": "synthetic-seed-7-liquid-24-illiquid-6",
+      "feature_set": "residual_lookback_5",
+      "parameters": {
+        "lookback": 5,
+        "hold": 5,
+        "decile": 0.1
+      },
+      "train_window": "2022-01-03:2023-07-03",
+      "validation_window": "2023-07-03:2024-06-28",
+      "test_window": "sealed-not-opened",
+      "cost_assumptions": {
+        "model": "stress",
+        "live_loss_halt_applied": false,
+        "reason": "Live loss, leverage, and concentration halts would censor the sample after the first drawdown. Per-trade notional, spread, and liquidity gates remain."
+      },
+      "metrics": {
+        "annualized_return": -0.46002557101936814,
+        "volatility": 0.0711745656572844,
+        "sharpe": -8.611928471866408,
+        "sharpe_ci90": [
+          -10.526112147725414,
+          -7.107074869937569
+        ],
+        "deflated_sharpe_probability": 7.098489238892117e-21,
+        "sortino": -11.887324250295793,
+        "calmar": -1.0057880850776393,
+        "max_drawdown": -0.4573782269292419,
+        "average_drawdown": -0.22547265199722671,
+        "drawdown_duration_sessions": 249,
+        "tail_loss_var_5": -0.009620719771983316,
+        "expected_shortfall_5": -0.012418430640605362,
+        "skew": -0.18326264934701844,
+        "excess_kurtosis": 0.40520255787203663,
+        "transaction_costs": 12320.770649114591,
+        "slippage": 5192.031699702975,
+        "benchmark_sharpe": 0.0,
+        "n_trials": 4,
+        "return_by_year": {
+          "2023": -0.2222193246052825,
+          "2024": -0.3023460337383902
+        },
+        "trades": 394.0,
+        "hit_rate": 0.35279187817258884,
+        "profit_factor": 0.3986342034483548,
+        "expectancy": -58.78707900533452,
+        "avg_winner": 110.45849938900648,
+        "avg_loser": -151.04251193401453,
+        "win_loss_ratio": 0.7313073516498596,
+        "avg_holding_sessions": 7.279187817258883,
+        "median_holding_sessions": 7.0
+      },
+      "n_trials": 4,
+      "notes": "Synthetic methodology run. Not evidence about US equities.",
+      "monte_carlo": {
+        "median_max_drawdown": -67626.47131458308,
+        "p95_max_drawdown": -68114.52222425536
+      },
+      "result": "recorded"
+    }
+  ],
+  "real_market_evidence": false
+}

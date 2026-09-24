@@ -1,0 +1,39 @@
+# Shipping defaults. Every item must be true before limited live can be considered.
+# The application will not flip these. Complete LIVE_TRADING_CHECKLIST.md by hand,
+# then edit this file yourself. Even then, secrets/live.unlock and TRADING_MODE=live
+# are separate requirements. The API cannot write this file.
+items:
+  data_integrity_validated: false
+  backtest_validated: false
+  look_ahead_audit_passed: false
+  survivorship_review_passed: false
+  transaction_costs_modeled: false
+  slippage_modeled: false
+  walk_forward_validation_passed: false
+  final_holdout_evaluated: false
+  paper_trading_completed: false
+  shadow_mode_completed: false
+  risk_engine_tests_passed: false
+  kill_switch_tested: false
+  broker_reconciliation_tested: false
+  duplicate_order_protection_tested: false
+  restart_recovery_tested: false
+  market_data_disconnect_tested: false
+  broker_disconnect_tested: false
+  logging_verified: false
+  monitoring_verified: false
+  alerts_verified: false
+  security_review_completed: false
+  credentials_isolated: false
+  position_limits_configured: false
+  daily_loss_limit_configured: false
+  capital_limit_configured: false
+  manual_live_authorization_received: false
+limited_live_caps:
+  capital: 0
+  max_position_notional: 0
+  max_simultaneous_positions: 0
+  max_daily_trades: 0
+  max_daily_loss: 0
+  max_drawdown_fraction: 0
+  max_gross_exposure: 0

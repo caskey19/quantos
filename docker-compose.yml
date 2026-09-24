@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: quantos
+      POSTGRES_PASSWORD: quantos
+      POSTGRES_DB: quantos
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quantos"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TRADING_MODE: paper
+      QUANTOS_BIND_HOST: 0.0.0.0
+      QUANTOS_IN_DOCKER: "1"
+      DATABASE_URL: postgresql+psycopg://quantos:quantos@postgres:5432/quantos
+      DATA_ROOT: /app/data
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ops:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./apps/web
+    ports:
+      - "127.0.0.1:5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  ops:

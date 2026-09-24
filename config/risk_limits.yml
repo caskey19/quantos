@@ -1,0 +1,31 @@
+# Production risk limits. Strategy code cannot write this file.
+# Figures are deliberately small for a future limited-live stage.
+account_equity_reference: 100000
+max_shares: 500
+max_notional_per_trade: 5000
+max_gross_exposure: 50000
+max_net_exposure: 10000
+max_symbol_notional: 5000
+max_sector_notional: 15000
+max_open_positions: 12
+max_orders_per_day: 40
+max_daily_turnover: 25000
+max_daily_loss: 500
+max_weekly_loss: 1500
+max_drawdown_fraction: 0.05
+max_estimated_slippage_bps: 25
+max_spread_bps: 15
+max_leverage: 1.0
+max_concentration: 0.10
+min_price: 5
+max_price: 2000
+min_average_dollar_volume: 20000000
+max_participation: 0.01
+max_bar_staleness_seconds: 120
+max_abs_return: 0.25
+reconciliation_tolerance: 1.0
+market_open: "09:30"
+market_close: "16:00"
+timezone: America/New_York
+allow_extended_hours: false
+kill_action: stop_new

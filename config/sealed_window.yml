@@ -1,0 +1,5 @@
+# Final holdout. Loaders refuse these dates for research, training, and model selection.
+# Open only with purpose: promotion_review, which the application does not invoke.
+sealed_start: "2025-04-01"
+sealed_end: "2026-09-23"
+timezone: America/New_York
